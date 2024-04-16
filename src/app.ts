@@ -48,7 +48,7 @@ async function start() {
       if (!text.startsWith(prefix)) return;
       const cmd = text.slice(prefix.length).trim().split(/\s/)[0].toLowerCase()
       const content = text.slice(prefix.length + cmd.length).trim() !== "" ? text.slice(prefix.length + cmd.length).trim() : null
-      // const args = content ? content.trim().split(/\s/) : null
+      //const args = content ? content.trim().split(/\s/) : null
 
       switch (cmd) {
         case "ping": {
@@ -57,10 +57,20 @@ async function start() {
         }
         case "sticker":
         case "stiker": {
-          const args = content ? content.trim().split("|") : null
-          const author = args ? args[0] : ""
-          const pack = args ? args[1] : ""
-          const sticker = await vox.createSticker(author, pack) as AnyMessageContent
+          let type: string = ""
+          let author: string = ""
+          let pack: string = ""
+
+          const patterns = { type: /type="([^"]+)"/, author: /author="([^"]+)"/, pack: /pack="([^"]+)"/ }
+          const typeMatch = content?.match(patterns.type)
+          const authorMatch = content?.match(patterns.author)
+          const packMatch = content?.match(patterns.pack)
+
+          type = typeMatch ? typeMatch[1] : ""
+          author = authorMatch ? authorMatch[1] : ""
+          pack = packMatch ? packMatch[1] : ""
+
+          const sticker = await vox.createSticker(type, author, pack) as AnyMessageContent
           socket.sendMessage(message.key.remoteJid!, sticker, { quoted: message })
           break;
         }

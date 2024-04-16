@@ -26,8 +26,26 @@ export class VoxConfig {
     )
   }
 
-  async createSticker(author: string = "", pack_name: string = ""): Promise<AnyMessageContent | undefined> {
+  async createSticker(stickerType: string = "", author: string = "", pack_name: string = ""): Promise<AnyMessageContent | undefined> {
     try {
+      let type: string
+      switch (stickerType.toLowerCase()) {
+        case "c":
+          type = StickerTypes.CROPPED
+          break
+        case "f":
+          type = StickerTypes.FULL
+          break
+        case "o":
+          type = StickerTypes.CIRCLE
+          break
+        case "r":
+          type = StickerTypes.ROUNDED
+          break
+        default:
+          type = StickerTypes.FULL
+      }
+
       const media: proto.Message.IVideoMessage | proto.Message.IImageMessage | null =
         this.msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.imageMessage ||
         this.msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.videoMessage ||
@@ -47,7 +65,7 @@ export class VoxConfig {
 
       const sticker = new Sticker(buffer, {
         quality: 15,
-        type: StickerTypes.FULL,
+        type,
         author,
         pack
       })
