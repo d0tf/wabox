@@ -54,7 +54,8 @@ export class VoxConfig {
 
       return sticker.toMessage()
     } catch (e) {
-      console.error(e)
+      const error = e as Error
+      console.error(error.message)
     }
   }
 }

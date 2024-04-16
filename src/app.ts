@@ -25,7 +25,8 @@ async function start() {
           console.log("Logged out")
           process.exit(0)
         }
-      } catch (error) {
+      } catch (e) {
+        const error = e as Error
         console.error(error)
       }
     }
@@ -65,7 +66,8 @@ async function start() {
         }
       }
     } catch (e) {
-      console.error(e)
+      const error = e as Error
+      console.error(error.message)
     }
   })
 }
