@@ -28,5 +28,5 @@ npm start
 git clone https://github.com/d0tf/wabox
 cd wabox
 docker compose up -d
-docker logs wabox # to see qrcode
+docker logs -f wabox # to see qrcode
 ```
