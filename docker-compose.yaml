@@ -2,3 +2,4 @@ services:
   bot:
     build: .
     container_name: wabox
+    restart: unless-stopped
