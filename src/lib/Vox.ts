@@ -31,12 +31,14 @@ export class VoxConfig {
       const media: proto.Message.IVideoMessage | proto.Message.IImageMessage | null =
         this.msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.imageMessage ||
         this.msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.videoMessage ||
+        this.msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.stickerMessage ||
         this.msg.message?.imageMessage ||
         this.msg.message?.videoMessage ||
         null;
 
-      if (this.msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.stickerMessage) return { text: "ERROR: Lah tolol banget sticker mau dijadiin sticker minta dipukul" }
-      if (!media) return { text: "ERROR: i don't think it's a picture or video" }
+      if (!media) {
+        return { text: "Hmm... I'm pretty sure that's not a picture or video." }
+      }
 
       const mediaType = media.mimetype?.split("/")[0] as MediaType
       const stream = await downloadContentFromMessage(media, mediaType)
