@@ -1,7 +1,9 @@
 # WABOX
-Simple WhatsApp bot to create sticker from image, video or GIF.
+A simple WhatsApp bot to create stickers from images, videos, or GIFs.
 
-## How to use
+Simply use the `/sticker` command to create a sticker or if you want to add a sticker pack and author you can use a command like this `/sticker author|sticker_pack`.
+
+## Usage
 ```sh
 git clone https://github.com/d0tf/wabox
 cd wabox
