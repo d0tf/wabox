@@ -1,0 +1,4 @@
+services:
+  bot:
+    build: .
+    container_name: wabox
