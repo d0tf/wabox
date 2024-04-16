@@ -18,7 +18,7 @@ export class VoxConfig {
 
   getText(): string | null {
     return (
-      this.message.message?.ephemeralMessage?.message?.extendedTextMessage?.text ||
+      this.msg.message?.ephemeralMessage?.message?.extendedTextMessage?.text ||
       this.msg.message?.extendedTextMessage?.text ||
       this.msg.message?.imageMessage?.caption ||
       this.msg.message?.videoMessage?.caption ||
