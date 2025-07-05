@@ -102,7 +102,7 @@ async function start() {
           socket.sendMessage(message.key.remoteJid!, sticker, { quoted: message })
           break;
         }
-        case "teto": {
+        case "tv": {
           if (args) {
             if (args.length < 1) {
               socket.sendMessage(message.key.remoteJid!, { text: "/tv {pair} {timeframe}" }, { quoted: message })
