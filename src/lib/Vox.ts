@@ -65,7 +65,7 @@ export class VoxConfig {
       const pack = pack_name.match(/^".*"$/g) ? pack_name.replace('"', "") : pack_name
 
       const sticker = new Sticker(buffer, {
-        quality: 15,
+        quality: 10,
         type,
         author,
         pack

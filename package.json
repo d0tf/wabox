@@ -12,13 +12,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/qrcode": "^1.5.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
+    "@types/node": "^22.5.5",
     "@whiskeysockets/baileys": "^6.6.0",
-    "axios": "^1.6.7",
-    "qrcode-terminal": "^0.12.0",
+    "axios": "^1.7.2",
+    "puppeteer": "^24.11.2",
+    "qrcode": "^1.5.4",
     "wa-sticker-formatter": "^4.4.4"
   }
 }

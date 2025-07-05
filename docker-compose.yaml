@@ -1,5 +1,7 @@
 services:
   bot:
     build: .
-    container_name: wabox
+    container_name: priv-wabox 
     restart: unless-stopped
+    volumes:
+    - ./dist:/app/dist
